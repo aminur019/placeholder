@@ -1,0 +1,384 @@
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Coming Soon</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+        }
+        .video-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1;
+        }
+        .overlay2 {
+            width: 100%;
+            height: 100%;
+            background-color: #ffffff9e;
+            flex-direction: column;
+            justify-content: center;
+            display: flex;
+        }
+        .center-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: white;
+            z-index: 2;
+        }
+        .countdown {
+			
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        .countdown div {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 5px;
+            font-size: 2rem;
+            min-width: 60px;
+            text-align: center;
+        }
+		.side-button {
+			position: absolute;
+			top: 50%;
+			transform: translateY(-50%) rotate(-90deg);
+			background: rgba(26, 115, 232, 0.5);
+			padding: 10px 20px;
+			border-radius: 5px;
+			cursor: pointer;
+			z-index: 50;
+			letter-spacing: 2px;
+			font-weight: 900;
+		}
+        .side-button:hover {
+            background: rgba(26, 115, 232, 0.7);
+        }
+        .about-us-button {
+            left: -35px;
+        }
+        .contact-us-button {
+            right: -35px;
+        }
+        .panel {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            color: white;
+            z-index: 3;
+            overflow-y: auto;
+            transform: translateX(-100%);
+            transition: transform 0.5s ease;
+        }
+        .panel.active {
+            transform: translateX(0);
+        }
+        .panel.right {
+            right: 0;
+            transform: translateX(100%);
+        }
+        .panel.right.active {
+            transform: translateX(0);
+        }
+        .panel-content {
+            padding: 20px;
+            position: relative;
+        }
+        .close-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            cursor: pointer;
+            color: #000;
+            z-index: 999;
+        }
+        .about-us-content, .contact-us-content {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+            background-color: #fff;
+            color: #000;
+            padding: 20px;
+        }
+        .about-us-content h2, .contact-us-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        .about-us-content p, .contact-us-content p {
+            font-size: 1.2rem;
+            line-height: 1.6;
+        }
+        .contact-form input, .contact-form textarea {
+            width: 86%;
+            padding: 10px;
+            margin-top: 10px;
+            margin-bottom: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid #8f8383;
+            border-radius: 5px;
+            color: white;
+            margin: 10px 30px;
+        }
+        .contact-form button {
+            width: 100%;
+            padding: 10px;
+            background: #1a73e8;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            font-size: 1.2rem;
+            cursor: pointer;
+        }
+        .contact-form button:hover {
+            background: #155ab6;
+        }
+        .newsletter-button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background: #1a73e8;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            font-size: 1.2rem;
+            cursor: pointer;
+        }
+        .newsletter-button:hover {
+            background: #155ab6;
+        }
+        .newsletter-popup {
+            display: none;
+            position: fixed;
+            bottom: -10%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            z-index: 4;
+            width: 90%;
+            max-width: 600px;
+            text-align: center;
+            color: black;
+        }
+        .newsletter-popup.active {
+            display: block;
+        }
+        .newsletter-popup input {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            margin-bottom: 20px;
+            background: rgba(0, 0, 0, 0.1);
+            border: none;
+            border-radius: 5px;
+            color: black;
+        }
+        .newsletter-popup button {
+            width: 100%;
+            background: #1a73e8;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            font-size: 1.2rem;
+            cursor: pointer;
+        }
+        .newsletter-popup button:hover {
+            background: #155ab6;
+        }
+        .newsletter-popup .close-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            cursor: pointer;
+        }
+ @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        .infinite-pulse {
+            animation: pulse 3s infinite;
+        }
+        @keyframes gradient-text {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        .gradient-text {
+             background: linear-gradient(90deg, #ff7e5f, #c3f00e, #00c6ff, #0072ff, #fae632, #e100ff);
+            background-size: 200% 200%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradient-text 4s ease infinite;
+        }
+        .bg-image {
+            background: url('background.jpg') no-repeat center center;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+    <video autoplay="" class="video-bg" loop="" muted="">
+        <source src="https://a.storyblok.com/f/49831/x/2820adaa8f/sc-header-v4-web.mp4" type="video/mp4"/>
+        Your browser does not support HTML5 video.
+    </video>
+    <div class="overlay"></div>
+    <div class="center-content">
+				<div class="mb-8">
+					<i class="fas fa-rocket text-6xl gradient-text infinite-pulse infinite-pulse"></i>
+				   </div>
+				   <div>
+					<h1 class="text-5xl font-bold gradient-text infinite-pulse font-pacifico">Something Awesome is Coming Soon</h1>
+					
+			   </div>
+	   
+	   
+        <p class="mt-4 text-2xl">We are working hard to give you a better experience. Stay tuned!</p>
+		<div class="grid grid-cols-4 gap-4 text-3xl font-semibold text-gray-700 mt-16">
+            <div class="flex flex-col items-center bg-blue-100 p-4 rounded-lg">
+                <div id="days" class="text-5xl text-blue-600">365</div>
+                <div>Days</div>
+            </div>
+            <div class="flex flex-col items-center bg-blue-100 p-4 rounded-lg">
+                <div id="hours" class="text-5xl text-blue-600">00</div>
+                <div>Hours</div>
+            </div>
+            <div class="flex flex-col items-center bg-blue-100 p-4 rounded-lg">
+                <div id="minutes" class="text-5xl text-blue-600">00</div>
+                <div>Minutes</div>
+            </div>
+            <div class="flex flex-col items-center bg-blue-100 p-4 rounded-lg">
+                <div id="seconds" class="text-5xl text-blue-600">00</div>
+                <div>Seconds</div>
+            </div>
+        </div>
+        <button class="newsletter-button" onclick="toggleNewsletterPopup()">Subscribe to Newsletter</button>
+    </div>
+    <div class="side-button about-us-button text-white" onclick="togglePanel('about-us-panel')">About Us</div>
+    <div class="side-button contact-us-button text-white" onclick="togglePanel('contact-us-panel')">Contact Us</div>
+    <div class="bg-image panel" id="about-us-panel">
+        <div class="overlay2 panel-content">
+            <div class="about-us-content">
+                <div class="hidden close-button" onclick="togglePanel('about-us-panel')">
+                    <i class="fas fa-times"></i>
+                </div>
+                <h2>About Us</h2>
+                <p>We are a company dedicated to providing the best services to our customers. Our team is working tirelessly to bring you an amazing experience.</p>
+                <h3 class="mt-6 text-xl font-bold">Contact Information</h3>
+                <p class="mt-2">Phone: (123) 456-7890</p>
+                <p>Email: info@company.com</p>
+                <div class="mt-4">
+                    <a class="mr-4" href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a class="mr-4" href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="bg-image panel right" id="contact-us-panel">
+        <div class="overlay2">
+            <div class="hidden close-button" onclick="togglePanel('contact-us-panel')">
+                <i class="fas fa-times text-gray-800"></i>
+            </div>
+            <div class="panel-content">
+                <div class="contact-us-content">
+                    <h2>Contact Us</h2>
+                    <form class="contact-form mt-4">
+                        <div class="mb-4">
+                            <label class="block text-sm font-medium" for="name">Name</label>
+                            <input class="mt-1 block w-full p-2 bg-gray-800 border border-gray-700 rounded-md" id="name" type="text"/>
+                        </div>
+                        <div class="mb-4">
+                            <label class="block text-sm font-medium" for="email">Email</label>
+                            <input class="mt-1 block w-full p-2 bg-gray-800 border border-gray-700 rounded-md" id="email" type="email"/>
+                        </div>
+                        <div class="mb-4">
+                            <label class="block text-sm font-medium" for="message">Message</label>
+                            <textarea class="mt-1 block w-full p-2 bg-gray-800 border border-gray-700 rounded-md" id="message"></textarea>
+                        </div>
+                        <button class="w-full py-2 bg-blue-600 rounded-md" type="submit">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="newsletter-popup" id="newsletter-popup">
+        <div class=" close-button" onclick="toggleNewsletterPopup()">
+            <i class="fas fa-times"></i>
+        </div>
+        <h2 class="text-2xl font-bold">Subscribe to our Newsletter</h2>
+        <form class="flex flex-row gap-4 mt-4">
+            <input placeholder="Enter your email" required="" type="email"/>
+            <button type="submit" class="h-[45px] mt-2">Subscribe</button>
+        </form>
+    </div>
+    <script>
+        function togglePanel(panelId) {
+            const panel = document.getElementById(panelId);
+            panel.classList.toggle('active');
+        }
+
+        function toggleNewsletterPopup() {
+            const popup = document.getElementById('newsletter-popup');
+            popup.classList.toggle('active');
+        }
+
+function countdown(daysFromNow) {
+            const target = new Date();
+            target.setDate(target.getDate() + daysFromNow);
+
+            const interval = setInterval(() => {
+                const now = new Date().getTime();
+                const distance = target.getTime() - now;
+
+                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                document.getElementById('days').innerText = days < 10 ? '0' + days : days;
+                document.getElementById('hours').innerText = hours < 10 ? '0' + hours : hours;
+                document.getElementById('minutes').innerText = minutes < 10 ? '0' + minutes : minutes;
+                document.getElementById('seconds').innerText = seconds < 10 ? '0' + seconds : seconds;
+
+                if (distance < 0) {
+                    clearInterval(interval);
+                    document.getElementById('days').innerText = '00';
+                    document.getElementById('hours').innerText = '00';
+                    document.getElementById('minutes').innerText = '00';
+                    document.getElementById('seconds').innerText = '00';
+                }
+            }, 1000);
+        }
+
+        countdown(365);
+    </script>
+</body>
+</html>
