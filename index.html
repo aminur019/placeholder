@@ -70,7 +70,7 @@
 			border-radius: 5px;
 			cursor: pointer;
 			z-index: 50;
-			letter-spacing: 2px;
+			letter-spacing: 1px;
 			font-weight: 900;
 		}
         .side-button:hover {
@@ -243,6 +243,7 @@
             height: 100%;
         }
     </style>
+</head>
 	<script>
         // Right-click নিষ্ক্রিয় করতে
         document.addEventListener('contextmenu', (event) => event.preventDefault());
@@ -267,7 +268,6 @@
             }
         };
     </script>
-</head>
 <body>
     <video autoplay="" class="video-bg" loop="" muted="">
         <source src="https://a.storyblok.com/f/49831/x/2820adaa8f/sc-header-v4-web.mp4" type="video/mp4"/>
@@ -303,11 +303,11 @@
                 <div>Seconds</div>
             </div>
         </div>
-        <button class="newsletter-button" onclick="toggleNewsletterPopup()">Subscribe</button>
+        <button class="newsletter-button" onclick="toggleNewsletterPopup()">Subscribe to Newsletter</button>
     </div>
     <div class="side-button about-us-button text-white" onclick="togglePanel('about-us-panel')">About Us</div>
     <div class="side-button contact-us-button text-white" onclick="togglePanel('contact-us-panel')">Contact Us</div>
-    <div class="bg-image panel" id="about-us-panel">
+    <div class="bg-image panel p-16" id="about-us-panel">
         <div class="overlay2 panel-content">
             <div class="about-us-content">
                 <div class="hidden close-button" onclick="togglePanel('about-us-panel')">
@@ -326,42 +326,50 @@
             </div>
         </div>
     </div>
-    <div class="bg-image panel right" id="contact-us-panel">
+    <div class="bg-image panel right p-16" id="contact-us-panel">
         <div class="overlay2">
             <div class="hidden close-button" onclick="togglePanel('contact-us-panel')">
                 <i class="fas fa-times text-gray-800"></i>
             </div>
-            <div class="panel-content">
-                <div class="contact-us-content">
-                    <h2>Contact Us</h2>
-                    <form class="contact-form mt-4">
-                        <div class="mb-4">
-                            <label class="block text-sm font-medium" for="name">Name</label>
-                            <input class="mt-1 block w-full p-2 bg-gray-800 border border-gray-700 rounded-md" id="name" type="text"/>
-                        </div>
-                        <div class="mb-4">
-                            <label class="block text-sm font-medium" for="phone">Phone Number ( Whit Country Code )</label>
-                            <input class="mt-1 block w-full p-2 bg-gray-800 border border-gray-700 rounded-md" id="phune" type="number"/>
-                        </div>			    
-                        <div class="mb-4">
-                            <label class="block text-sm font-medium" for="email">Email</label>
-                            <input class="mt-1 block w-full p-2 bg-gray-800 border border-gray-700 rounded-md" id="email" type="email"/>
-                        </div>
-                        <div class="mb-4">
-                            <label class="block text-sm font-medium" for="message">Message</label>
-                            <textarea class="mt-1 block w-full p-2 bg-gray-800 border border-gray-700 rounded-md" id="message"></textarea>
-                        </div>
-                        <button class="w-full py-2 bg-blue-600 rounded-md" type="submit">Submit</button>
-                    </form>
-                </div>
-            </div>
+      <div class="panel-content">
+     <div class="contact-us-content">
+      <h2 class="text-2xl font-bold">
+       Contact Us
+      </h2>
+      <form class="contact-form mt-4">
+       <div class="mb-4 relative">
+        <input class="mt-1 block w-full p-2 bg-gray-800 border border-gray-700 rounded-md pr-10" id="name" placeholder="Name" type="text"/>
+        <i class="fas fa-user absolute right-16 top-3 text-gray-400">
+        </i>
+       </div>
+       <div class="mb-4 relative">
+        <input class="mt-1 block w-full p-2 bg-gray-800 border border-gray-700 rounded-md pr-10" id="email" placeholder="Email" type="email"/>
+        <i class="fas fa-envelope absolute right-16 top-3 text-gray-400">
+        </i>
+       </div>
+       <div class="mb-4 relative">
+        <input class="mt-1 block w-full p-2 bg-gray-800 border border-gray-700 rounded-md pr-10" id="phone" placeholder="Phone Number ( +880 123 4567 8910)" type="tel"/>
+        <i class="fas fa-phone absolute right-16 top-3 text-gray-400">
+        </i>
+       </div>
+       <div class="mb-4 relative">
+        <textarea class="mt-1 block w-full p-2 bg-gray-800 border border-gray-700 rounded-md pr-10" id="message" placeholder="Message"></textarea>
+        <i class="fas fa-comment-dots absolute right-16 top-3 text-gray-400">
+        </i>
+       </div>
+       <button class="w-full py-2 bg-blue-600 rounded-md" type="submit">
+        Submit
+       </button>
+      </form>
+     </div>
+    </div>
         </div>
     </div>
     <div class="newsletter-popup" id="newsletter-popup">
         <div class=" close-button" onclick="toggleNewsletterPopup()">
             <i class="fas fa-times"></i>
         </div>
-        <h2 class="text-2xl font-bold">Subscribe to Newsletter</h2>
+        <h2 class="text-2xl font-bold">Subscribe to our Newsletter</h2>
         <form class="flex flex-row gap-4 mt-4">
             <input placeholder="Enter your email" required="" type="email"/>
             <button type="submit" class="h-[45px] mt-2">Subscribe</button>
