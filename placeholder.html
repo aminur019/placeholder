@@ -1,0 +1,174 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Website Coming Soon</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+	<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        .bg-video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+        .progress-bar {
+            height: 5px;
+            background-color: #fbbf24; /* Tailwind yellow-500 */
+            width: 0;
+        }
+        .social-icon:hover {
+            transform: scale(1.2);
+            transition: transform 0.2s;
+        }
+        .menu-item {
+            position: relative;
+            padding-bottom: 4px;
+        }
+        .menu-item::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: white;
+            transition: width 0.3s;
+        }
+        .menu-item:hover::after {
+            width: 100%;
+        }
+		.count{font-family: 'Orbitron', sans-serif;
+		color:red;}
+		.count-text{font-family:  sans-serif;
+		color:white; }
+		
+    </style>
+</head>
+<body class="relative m-0">
+    <video autoplay muted loop class="bg-video h-[100%] fixed">
+        <source src="https://www.freelancer.com/fs/download-api.php?type=contest&id=2530847&filename=sc-header-v4-web%20%282%29.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+    <div class="bg-black bg-opacity-50 h-full flex flex-col justify-between mb-16">
+        
+        <header class="sticky top-0 bg-black bg-opacity-50 z-10 flex justify-between items-center p-6 m-0 h-[10%]">
+            <div class="text-white text-xl font-bold">Your Logo</div>
+            <nav class="hidden md:flex space-x-6 text-white">
+                <a href="#" class="menu-item">Home</a>
+                <a href="#" class="menu-item">About</a>
+                <a href="#" class="menu-item">Services</a>
+                <a href="#" class="menu-item">Contact</a>
+            </nav>
+            <div class="md:hidden">
+                <button id="menu-toggle" class="text-white focus:outline-none">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </header>
+        <nav id="mobile-menu" class="hidden md:hidden flex flex-col items-center space-y-4 text-white">
+            <a href="#" class="menu-item">Home</a>
+            <a href="#" class="menu-item">About</a>
+            <a href="#" class="menu-item">Services</a>
+            <a href="#" class="menu-item">Contact</a>
+        </nav>
+        <main class="flex flex-col md:flex-row justify-between items-center p-6 md:p-12 h-[95vh]">
+            <div class="text-white md:w-2/3 flex md:flex-row flex-col items-center md:items-start text-center md:text-left">
+                <div class="w-2/3">
+				<h1 class="text-2xl md:text-4xl font-bold mb-4">DEAR VALUABLE CUSTOMER WE <span class="text-green-500">COMING SOON!</span> WITH NEW LOOK</h1>
+                <p class="mb-8">We are excited to announce that a brand new website is on its way! Our team is working hard to bring you an improved online experience with new features, better navigation, and a fresh look. Stay tuned for updates and be the first to know when we launch. We can't wait to share it with you!</p>
+                <div class="flex flex-wrap justify-center md:justify-start space-x-2 md:space-x-10 text-2xl mb-8 count" ] id="countdown">
+                    <div class="text-center w-16 md:w-24 mb-4 md:mb-0">
+                        <div id="days" class="font-bold bg-yellow-500 p-2 rounded">364</div>
+                        <div class="text-sm md:text-1xl count-text pt-4">DAYS</div>
+                    </div>
+                    <div class="text-center w-16 md:w-24 mb-4 md:mb-0">
+                        <div id="hours" class="font-bold bg-yellow-500 p-2 rounded">23</div>
+                        <div class="text-sm md:text-1xl count-text pt-4">HOURS</div>
+                    </div>
+                    <div class="text-center w-16 md:w-24 mb-4 md:mb-0">
+                        <div id="minutes" class="font-bold bg-yellow-500 p-2 rounded">59</div>
+                        <div class="text-sm md:text-1xl count-text pt-4">MINUTES</div>
+                    </div>
+                    <div class="text-center w-16 md:w-24 mb-4 md:mb-0">
+                        <div id="seconds" class="font-bold bg-yellow-500 p-2 rounded">59</div>
+                        <div class="text-sm md:text-1xl count-text pt-4">SECOND</div>
+                    </div>
+                </div>
+				</div>
+                <div class="w-1/3 flex flex-row md:flex-col items-center  space-x-4 md:space-x-0 md:space-y-4 text-2xl mt-4">
+                    <a href="#" class="hover:text-gray-400 social-icon"><i class="fab fa-dribbble"></i></a>
+                    <a href="#" class="hover:text-gray-400 social-icon"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="hover:text-gray-400 social-icon"><i class="fab fa-facebook"></i></a>
+                    <a href="#" class="hover:text-gray-400 social-icon"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+            <div class="bg-white bg-opacity-75 p-6 rounded-lg md:w-1/3 mt-8 md:mt-0 w-full max-w-md">
+                <h2 class="text-2xl font-bold mb-4 text-center md:text-left">Get in touch</h2>
+                <form>
+                    <input type="text" placeholder="Your name" class="w-full p-2 mb-4 border border-gray-300 rounded">
+                    <input type="email" placeholder="Your email" class="w-full p-2 mb-4 border border-gray-300 rounded">
+                    <input type="tel" placeholder="Your phone number" class="w-full p-2 mb-4 border border-gray-300 rounded">
+                    <textarea placeholder="Message" class="w-full p-2 mb-4 border border-gray-300 rounded"></textarea>
+                    <button type="submit" class="w-full bg-green-500 text-white p-2 rounded">Send</button>
+                </form>
+            </div>
+        </main>
+    </div>
+    <script>
+        // Set the date we're counting down to
+        var countDownDate = new Date();
+        countDownDate.setDate(countDownDate.getDate() + 365);
+
+        // Update the count down every 1 second
+        var x = setInterval(function() {
+
+            // Get today's date and time
+            var now = new Date().getTime();
+
+            // Find the distance between now and the count down date
+            var distance = countDownDate - now;
+
+            // Time calculations for days, hours, minutes and seconds
+            var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            // Display the result in the elements with id="days", "hours", "minutes", "seconds"
+            document.getElementById("days").innerHTML = days;
+            document.getElementById("hours").innerHTML = hours;
+            document.getElementById("minutes").innerHTML = minutes;
+            document.getElementById("seconds").innerHTML = seconds;
+
+            // Calculate the progress percentage
+            var totalSeconds = 365 * 24 * 60 * 60;
+            var elapsedSeconds = totalSeconds - (distance / 1000);
+            var progressPercentage = (elapsedSeconds / totalSeconds) * 100;
+
+            // Update the progress bar width
+            document.getElementById("progress-bar").style.width = progressPercentage + "%";
+
+            // If the count down is over, write some text 
+            if (distance < 0) {
+                clearInterval(x);
+                document.getElementById("countdown").innerHTML = "EXPIRED";
+            }
+        }, 1000);
+
+        // Toggle mobile menu
+        document.getElementById('menu-toggle').addEventListener('click', function() {
+            var mobileMenu = document.getElementById('mobile-menu');
+            if (mobileMenu.classList.contains('hidden')) {
+                mobileMenu.classList.remove('hidden');
+            } else {
+                mobileMenu.classList.add('hidden');
+            }
+        });
+    </script>
+</body>
+</html>
